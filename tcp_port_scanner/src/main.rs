@@ -2,13 +2,22 @@ use std::net::{TcpStream, ToSocketAddrs};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
+use std::env;
 
 fn main() {
+
+    let args = env::args().collect::<Vec<String>>();
+
+    let url = match args.len() {
+        2 => &args[1],
+        _ => panic!("Argument error... (ex: tcp_port_scanner google.com)"),
+    };
+
     let open_ports = Arc::new(Mutex::new(Vec::new()));
     let mut handles = Vec::new();
 
     for i in 1..=1024 {
-        let addr = format!("scanme.nmap.org:{}", i)
+        let addr = format!("{}:{}", url, i)
             .to_socket_addrs()
             .unwrap()
             .next()
