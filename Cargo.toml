@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "tcp_port_scanner",
+    "tcp_proxy",
+]
