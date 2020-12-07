@@ -1,11 +1,10 @@
+use std::env;
 use std::net::{TcpStream, ToSocketAddrs};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
-use std::env;
 
 fn main() {
-
     let args = env::args().collect::<Vec<String>>();
 
     let url = match args.len() {
