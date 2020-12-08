@@ -9,7 +9,7 @@ fn main() {
 
     let url = match args.len() {
         2 => &args[1],
-        _ => panic!("Argument error... (ex: tcp_port_scanner google.com)"),
+        _ => panic!("Argument error... (ex: tcp_port_scanner scanme.nmap.org)"),
     };
 
     let open_ports = Arc::new(Mutex::new(Vec::new()));
